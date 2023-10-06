@@ -14,21 +14,20 @@ export default function ItemList() {
         return accumulator;
     }, []).sort((a, b) => a.localeCompare(b));
 
-    let sortedItem;
     let selectedItem;
 
     if (sortBy === 'name' || sortBy === 'groupedCategory') {
-        sortedItem = items.sort((a, b) => a.name.localeCompare(b.name));
+        items.sort((a, b) => a.name.localeCompare(b.name));
     }
     else if (sortBy === 'category') {
-        sortedItem = items.sort((a, b) => a.category.localeCompare(b.category));
+        items.sort((a, b) => a.category.localeCompare(b.category));
     }
 
     function display() {
         if (sortBy === 'groupedCategory') {
             const displayElement = [];
             for (const cat of uniCategory) {
-                selectedItem = sortedItem.filter((item) => item.category === cat);
+                selectedItem = items.filter((item) => item.category === cat);
                 displayElement.push(
                     <div key={cat}>
                         <h2 className=" capitalize text-lg">{cat}</h2>
@@ -45,8 +44,8 @@ export default function ItemList() {
         else {
             return (
                 <ul>
-                    {items.map((sortedItem) => (
-                        <Item key={sortedItem.id} name={sortedItem.name} quantity={sortedItem.quantity} category={sortedItem.category} />
+                    {items.map((item) => (
+                        <Item key={item.id} name={item.name} quantity={item.quantity} category={item.category} />
                     ))}
                 </ul>
             )
