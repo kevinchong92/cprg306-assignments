@@ -25,7 +25,7 @@ export default function NewItem({ onSubmit }) {
     };
 
     return (
-        <main className=" flex justify-center text-black w-full">
+        <main className=" flex text-black w-full">
             <form onSubmit={handleSubmit}
                 className=" p-2 m-4 bg-slate-900 max-w-sm w-full">
                 <div className=" mb-2">
